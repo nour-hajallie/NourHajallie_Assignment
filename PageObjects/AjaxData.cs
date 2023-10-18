@@ -72,17 +72,13 @@ namespace NourHajallie_AutomationProject.PageObjects
             {
                 // Handle the case where the element is not found
                 log.Error("Ajax data element was not found.");
-
-                // Explicitly fail the test or return a specific value, depending on your requirements
-                return null; // You can change this to return a sentinel value, throw an exception, or fail the test
+                return null;
             }
             catch (Exception ex)
             {
                 // Handle other exceptions
                 log.Error("Error while waiting for Ajax Data", ex);
-
-                // Explicitly fail the test or return a specific value, depending on your requirements
-                return null; // You can change this to return a sentinel value, throw an exception, or fail the test
+                return null;
             }
         }
 

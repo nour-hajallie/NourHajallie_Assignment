@@ -12,16 +12,16 @@ namespace NourHajallie_AutomationProject.Config
         private String sampleAppUrl;
         private String ajaxUrl;
         private String textInputUrl;
-        private String overlappedElementUrl;
 
         public EnvironmentConfig()
         {
             sampleAppUrl = "http://www.uitestingplayground.com/sampleapp";
             ajaxUrl = "http://www.uitestingplayground.com/ajax";
             textInputUrl = "http://www.uitestingplayground.com/textinput";
-            overlappedElementUrl = "http://www.uitestingplayground.com/overlapped";
 
             setSampleAppUrl(sampleAppUrl);
+            setAjaxUrl(ajaxUrl);
+            setTextInputUrl(textInputUrl);
         }
 
         public void setSampleAppUrl(String _sampleAppUrl)

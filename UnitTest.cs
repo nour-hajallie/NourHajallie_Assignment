@@ -8,10 +8,8 @@ using NUnit.Framework.Internal;
 using log4net.Config;
 using NourHajallie_AutomationProject.PageObjects;
 using Assert = NUnit.Framework.Assert;
-using OpenQA.Selenium.Support.UI;
 using NourHajallie_AutomationProject.DataEntities;
 using NourHajallie_AutomationProject.BackendAPI;
-using System.Xml.Linq;
 
 namespace NourHajallie_AutomationProject
 {
@@ -65,7 +63,10 @@ namespace NourHajallie_AutomationProject
         [Test, Order(1)]
         public void TestUISampleApp()
         {
-            //In this function we are Filling in and submit the form
+            //Scenario:
+            //User fill username
+            //User fill password
+            //User click on Login button
             //Assert that the welcome message will be displayed
 
             log.Info("Testing UI Sample App Page Started");
@@ -116,12 +117,14 @@ namespace NourHajallie_AutomationProject
         [Test, Order(2)]
         public void TestUIAjaxData()
         {
-            //In this function we are Clickin on 
-            //Assert that the welcome message will be displayed
+            //Scenario:
+            //User click on Button
+            //Wait for data to appear (15 seconds)
+            //Assert that it waits for label text to appear
 
             log.Info("Testing UI Sample App Page Started");
 
-            // Navigate to a Sample App Url
+            // Navigate to a Ajax Data Url
             String ajaxUrl = environmentConfig.getAjaxUrl();
             driver.Navigate().GoToUrl(ajaxUrl);
 
@@ -129,9 +132,6 @@ namespace NourHajallie_AutomationProject
 
             log.Info("Click on Ajax Button");
             ajaxData.clickAjaxButton();
-
-            // Set the wait duration
-            int waitDurationInSeconds = 15;
 
             // Create a WebDriverWait with the specified duration
             log.Info("Wait for 15 sec");
@@ -145,12 +145,14 @@ namespace NourHajallie_AutomationProject
         [Test, Order(3)]
         public void TestUITextInput()
         {
-            //Record setting text into the input field and pressing the button.
-            //Then execute your test to make sure that the button name is changing.
+            //Scenario:
+            //User record setting text into the input field
+            //User click the button.
+            //Assert that the button name is changing.
 
             log.Info("Testing UI Text Input Page Started");
 
-            // Navigate to a Sample App Url
+            // Navigate to a Text Input Url
             String textInputUrl = environmentConfig.getTextInputUrl();
             driver.Navigate().GoToUrl(textInputUrl);
 
@@ -173,16 +175,14 @@ namespace NourHajallie_AutomationProject
             log.Info("Assert that the new value is the same that was filled in the input");
             Assert.AreEqual(buttonNewValue, newButtonAfterClick);
             log.Info("New button value is " + newButtonAfterClick);
-
-
-
         }
 
         [Test, Order(4)]
         public void TestApiPostListOfUsers()
         {
-            //API FOR TEST: v2/user/createWithList
-            //CREATE LIST OF USERS WITH GIVEN INPUT
+            //API FOR TEST: POST v2/user/createWithList
+            //Creat list of user
+            //Call the API POST v2/user/createWithList
             //Assert that the response code is 200 -- list of users created successfully
 
             log.Info("Testing API Create list of users with given input");
@@ -230,8 +230,9 @@ namespace NourHajallie_AutomationProject
         [Test, Order(5)]
         public void TestApiGetPetById()
         {
-            //API FOR TEST: /v2/pet/{petId}
-            //Get the info of a pet by Id
+            //API FOR TEST: GET /v2/pet/{petId}
+            //Get the info of a pet by Id from app.config file
+            //Call the API GET /v2/pet/{petId}
             //Assert that the code is 200 and display the data of this pet
 
             log.Info("Testing API Get the Pet info by pet id");
@@ -242,7 +243,7 @@ namespace NourHajallie_AutomationProject
             log.Info("Call the function of API to get the data of a pet");
             PetResponse petResponse = api.GetPetById(getPetId);
 
-            // Assert that the data of the pet are sent
+            //Assert that the data of the pet are sent
             log.Info("Assert that the data of the Pet are sent");
             Assert.IsNotNull(petResponse.id);
             log.Info("List of Pet sent successfully");
@@ -261,9 +262,10 @@ namespace NourHajallie_AutomationProject
         [Test, Order(6)]
         public void TestApiDeletePetById()
         {
-            //API FOR TEST: /v2/pet/1
-            //Delete a pet by Id
-            //Assert that the code is 200 and pet is deleted
+            //API FOR TEST: DELETE /v2/pet/{petId}
+            //Get the info of a pet to delete by Id from app.config file
+            //Call the API DELETE /v2/pet/{petId}
+            //Assert that the code is 200 and the pet is deleted
 
             log.Info("Testing API Delete a pet");
 

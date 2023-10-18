@@ -1,22 +1,15 @@
 ﻿using log4net;
 using log4net.Config;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using NourHajallie_AutomationProject.DataEntities;
-using OpenQA.Selenium;
 using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NourHajallie_AutomationProject.BackendAPI
 {
     public class ApiFunctions
     {
         private RestClient client;
+
         // Create a logger instance for the test class
         ILog log = LogManager.GetLogger(typeof(ApiFunctions));
 
@@ -61,11 +54,11 @@ namespace NourHajallie_AutomationProject.BackendAPI
 
         public PetResponse GetPetById(string petId)
         {
-            // Create a request to the specified endpoint using the HTTP POST method
+            // Create a request to the specified endpoint using the HTTP GET method
             var request = new RestRequest("/v2/pet/{petId}", Method.Get);
             log.Info("Running Get /v2/pet/{petId} to Get Pet data based on Pet Id.");
 
-            // Replace {id} with the actual board ID
+            // Replace {id} with the actual pet ID
             request.AddUrlSegment("petId", petId);
 
             // Execute the HTTP request and get the response
@@ -74,7 +67,7 @@ namespace NourHajallie_AutomationProject.BackendAPI
             // Check if the response status code is OK (200)
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                // Deserialize the response content into an ApiResponse object
+                // Deserialize the response content into an PetResponse object
                 var mappedResponse = JsonConvert.DeserializeObject<PetResponse>(response.Content);
                 return mappedResponse;
             }
@@ -93,10 +86,10 @@ namespace NourHajallie_AutomationProject.BackendAPI
             var request = new RestRequest("/v2/pet/{id}", Method.Delete);
             log.Info("Running Get /v2/pet/{id} request to Delete a Pet.");
 
-            // Replace {id} with the actual board ID
+            // Replace {id} with the actual pet ID
             request.AddUrlSegment("id", deletePetId);
 
-            // Add your Trello API key and token as query parameters
+            // Add your API key as query parameters
             request.AddParameter("key", api_key);
 
             // Execute the HTTP request and get the response

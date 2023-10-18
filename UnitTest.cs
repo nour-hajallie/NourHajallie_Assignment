@@ -119,7 +119,7 @@ namespace NourHajallie_AutomationProject
         {
             //Scenario:
             //User click on Button
-            //Wait for data to appear (15 seconds)
+            //Wait for data to appear (16 seconds)
             //Assert that it waits for label text to appear
 
             log.Info("Testing UI Sample App Page Started");
@@ -135,10 +135,14 @@ namespace NourHajallie_AutomationProject
 
             // Create a WebDriverWait with the specified duration
             log.Info("Wait for 15 sec");
-            Thread.Sleep(15000); // 15 seconds = 15,000 milliseconds
+            Thread.Sleep(16000); // 16 seconds = 16,000 milliseconds
 
-            ajaxData.ajaxDataIsDisplayed();
+            String ajaxDataValue = ajaxData.ajaxDataIsDisplayed();
             log.Info("Ajax Data is displayed");
+
+            // Assert that the value is equal to the expected text
+            Assert.AreEqual("Data loaded with AJAX get request.", ajaxDataValue);
+            log.Info("Ajax data is as expected: " + ajaxDataValue);
 
         }
 

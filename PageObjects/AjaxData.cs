@@ -53,25 +53,40 @@ namespace NourHajallie_AutomationProject.PageObjects
             }
         }
 
-        public void ajaxDataIsDisplayed()
+        public string ajaxDataIsDisplayed()
         {
             try
-            {
+            { 
+                // Use WebDriver to find the element
                 IWebElement element = driver.FindElement(ajaxData);
 
                 // Assert that the element has appeared
                 Assert.IsNotNull(element, "The element did not appear within 15 seconds.");
+
+                // Get the text value of the element
+                string elementText = element.Text;
+
+                return elementText;
+            }
+            catch (NoSuchElementException)
+            {
+                // Handle the case where the element is not found
+                log.Error("Ajax data element was not found.");
+
+                // Explicitly fail the test or return a specific value, depending on your requirements
+                return null; // You can change this to return a sentinel value, throw an exception, or fail the test
             }
             catch (Exception ex)
             {
+                // Handle other exceptions
                 log.Error("Error while waiting for Ajax Data", ex);
 
-                // Explicitly fail the test
-                Assert.Fail("Ajax data element was not found.");
+                // Explicitly fail the test or return a specific value, depending on your requirements
+                return null; // You can change this to return a sentinel value, throw an exception, or fail the test
             }
-           
         }
+
     }
 
-    
+
 }

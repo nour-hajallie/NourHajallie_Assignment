@@ -154,7 +154,11 @@ To run the Jenkins pipeline, follow these steps:
 
 4. Save the job configuration and click on "Build Now" to run the pipeline.
 
-Picture showing Pipeline running without and with errors: [PipelineRun](pipelinePicture.png)
+Picture showing Pipeline running without errors : [PipelineRun](pipelineResult.png)
+
+Picture showing Pipeline Logs : [PipelineLogs](PipelineLogs.png)
+
+Picture showing Pipeline running with errors : [PipelineErrors](PipelineError.png]
 
 # Scenarios Chosen for testing
 

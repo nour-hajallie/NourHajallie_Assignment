@@ -2,7 +2,7 @@
 
 The aim of this project is to implement automation testing for UI and API with the objective of validating Chosen key scenarios.
 
-The repository include functions on the uitestingplayground for UI and petstore.swagger.io for API That verify that the expected results are achieved.
+The repository include functions on the uitestingplayground for UI and petstore.swagger.io for API to verify that the expected results are achieved.
 
 
 # Technologies and Languages
@@ -13,7 +13,7 @@ Project uses RestSharp and NUnit for the API functions and Selenium for the UI f
 
 Visual Studio 2022 was used to run locally the project/tests and Jenkins was used to create the pipeline.
 
-All dependencies installed from NuGet for easy management. test
+All dependencies installed from NuGet for easy management.
 
 # Directories and Files
 
@@ -39,8 +39,6 @@ The project contains
 
 This application uses log4net to log important information and errors. 
 
-To configure the logging, you will need to modify the 'log4net.config' file, located in the root directory of the project.
-
 The 'log4net.config' file contains the logging configuration settings. 
 
 By default, the file is configured to log to a file named 'LogReport_yyyyMMdd.txt' in the directory 'bin\Debug\reportResult\Logs\LogReport.logLogs'.
@@ -56,13 +54,13 @@ Below are the requirements or conditions that need to be filled in App.config be
 
 1- Specify the location of the chromedriver in your device.
 
-2- Fill username valye (use any non-empty user name).
+2- Fill username value (use any non-empty user name).
 
 3- Fill password value to be equal to 'pwd'.
 
-4- Fill a getPetId value (Value must be an integer).
+4- Fill a getPetId value (Value must be an integer and valid).
 
-5- Fill a deletedPetId value (Value must be an integer).
+5- Fill a deletedPetId value (Value must be an integer and valid).
 
 6- Fill the api_key value to be equal to "special_key" (Specified for this sample).
 
@@ -70,25 +68,25 @@ App.config should be filled in this way:
 
 ```
 	<appSettings>
-		<add key="driverPath" value="D:\Users\NAli\Downloads\chromedriver-win64\chromedriver-win64\chromedriver.exe" />
-		<add key="username" value="Nour" />
-		<add key="password" value="pwd"/>
-		<add key="getPetId" value="12"/>
-		<add key="deletePetId" value="12"/>
+		<add key="driverPath" value="CHROMEDRIVER_PATH" />
+		<add key="username" value="USERNAME" />
+		<add key="password" value="PASSWORD"/>
+		<add key="getPetId" value="INTEGER_VALUE"/>
+		<add key="deletePetId" value="INTEGER_VALUE"/>
 		<add key="api_key" value="special_key"/>
 	</appSettings>
 ```
 
 # Installation
-1.	Clone the repository: 
+1. Clone the repository: 
 
 ```
-git clone https://github.com/nour-hajallie/TrelloTestAutomation.git
+git clone https://github.com/nour-hajallie/NourHajallie_Assignment.git
 ```
 
-2.	Open the solution file NourHajallie_AutomationProject.sln in Visual Studio.
+2. Open the solution file NourHajallie_Assignment.sln in Visual Studio.
 
-3.	Install the NuGet packages by selecting from the "Manage NuGet Packages".
+3. Install the NuGet packages by selecting from the "Manage NuGet Packages".
 
 4. Build the solution by selecting "Build Solution" from the "Build" menu or pressing Ctrl+Shift+B.
 
@@ -158,7 +156,7 @@ Picture showing Pipeline running without errors : [PipelineRun](pipelineResult.p
 
 Picture showing Pipeline Logs : [PipelineLogs](PipelineLogs.png)
 
-Picture showing Pipeline running with errors : [PipelineErrors](PipelineError.png]
+Picture showing Pipeline running with errors : [PipelineErrors](PipelineError.png)
 
 # Scenarios Chosen for testing
 
